@@ -1,10 +1,11 @@
 <#import "template.ftl" as layout />
 <@layout.mainLayout>
 
-<a href="/jpvocabulary?action=new" class="btn btn-secondary float-right mb-1" role="button">New JPvocabulary</a>
+<a href="/jpvocabulary?action=new" class="btn btn-outline-success" role="button">New</a>
 
+<p>&nbsp&nbsp</p>
 
- <select id="selectDate" name="selectDate" onchange="toSelectDate(this)">
+  <select class="selectpicker" id="selectDate" name="selectDate" onchange="toSelectDate(this)">
     <option value="">全部</option>
     <#list data as datas>
     <option value="${datas}">${datas}</option>
@@ -13,11 +14,11 @@
 
 <input type="hidden" id="beforevalue" name="beforevalue" value="${beforevalue}">
 
-<table class="table">
-    <thead class="thead-dark">
-    <tr>
+<table class="table table-bordered-sm" style="width:100%>
+    <thead class="thead-light">
+    <tr style="white-space: nowrap;">
         <th scope="col">日期</th>
-        <th scope="col">漢字</th>
+        <th scope="col">字</th>
         <th scope="col">詞性</th>
         <th scope="col">解釋</th>
         <th scope="col">例句</th>
@@ -27,7 +28,7 @@
     </thead>
     <tbody>
     <#list jpvocabularys as jpv>
-    <tr>
+    <tr style="white-space: nowrap;">
         <td>${jpv.date}</td>
         <td>${jpv.kanjiRuby}</td>
         <td>${jpv.type}</td>
@@ -35,8 +36,11 @@
         <td>${jpv.examplehiraganaRuby}</td>
         <td>${jpv.exampleTranslate}</td>
         <td>
-            <a href="/jpvocabulary?action=edit&id=${jpv.id}" class="btn btn-secondary float-right mr-2" role="button">Edit</a>
-            <a href="/delete?id=${jpv.id}" class="btn btn-danger float-right mr-2" role="button">Delete</a>
+            <div class="btn-group">
+             <a href="/jpvocabulary?action=edit&id=${jpv.id}" class="btn btn-outline-dark" role="button">Edit</a>
+              <a href="/delete?id=${jpv.id}" class="btn btn-outline-danger" role="button">Delete</a>
+            </div>
+
         </td>
     </tr>
     </#list>

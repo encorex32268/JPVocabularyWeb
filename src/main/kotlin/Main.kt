@@ -84,7 +84,17 @@ fun main() {
                                 call.respond(
                                         FreeMarkerContent("jpvocabulary.ftl",
                                             mapOf("jpvocabulary" to myFirebase.readById(id),
-                                                "action" to action))
+                                                "action" to action,
+                                                "DATE" to myFirebase.nowDate(),
+                                                "TYPES" to arrayListOf(
+                                                    "自動 I","自動 II",
+                                                    "他動 I","他動 II",
+                                                    "する名詞","名詞",
+                                                    "い形容詞","な形容詞",
+                                                    "副詞","文法"
+                                                )
+
+                                            ))
                                         )
                             }
                         }
@@ -149,7 +159,6 @@ fun main() {
 
             route("/select"){
                 get{
-                    println("select")
                     date = call.request.queryParameters["date"]
                     if(date != null){
                         call.respondRedirect("/", permanent = false)
