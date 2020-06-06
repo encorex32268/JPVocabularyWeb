@@ -54,6 +54,7 @@ class MyFirebase : Actions{
     }
 
     override fun readByDate(date: String): ArrayList<Vocabulary> {
+        if (date=="全部")return readAll()
         val resultList = arrayListOf<Vocabulary>()
         for (vocabulary in readAll()) {
             if (vocabulary.date == date){

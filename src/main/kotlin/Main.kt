@@ -51,7 +51,8 @@ fun main() {
                                     myFirebase.readByDate(it)
                                 }
                             },
-                            "data" to myFirebase.getAllDate()
+                            "data" to myFirebase.getAllDate(),
+                            "beforevalue" to date
                         )
                     ))
 

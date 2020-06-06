@@ -5,11 +5,13 @@
 
 
  <select id="selectDate" name="selectDate" onchange="toSelectDate(this)">
+    <option value="">全部</option>
     <#list data as datas>
     <option value="${datas}">${datas}</option>
     </#list>
   </select>
 
+<input type="hidden" id="beforevalue" name="beforevalue" value="${beforevalue}">
 
 <table class="table">
     <thead class="thead-dark">
@@ -42,7 +44,7 @@
 </table>
 
 <script>
-
+document.getElementById("selectDate").value = document.getElementById("beforevalue").value;
 function toSelectDate(selectObject){
         window.location.href = "/select?date="+selectObject.value;
         }
