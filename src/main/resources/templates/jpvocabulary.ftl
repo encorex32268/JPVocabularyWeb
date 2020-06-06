@@ -32,9 +32,12 @@
                 <div class="form-group">
                             <label for="type">詞性</label>
                              <select id="selectType" name="selectType" onchange="setTypeData(this)" >
+                                        <option value="">請選擇</option>
                                         <#list TYPES as types>
                                          <option value="${types}">${types}</option>
                                          </#list>
+
+
                             </select>
                         </div>
                         <div class="form-group">
@@ -77,6 +80,9 @@
       </script>
 
         <script>
+
+        document.getElementById("selectType").value = document.getElementById("type").value;
+
                     function setTypeData(selectObject){
                         document.getElementById("type").value = selectObject.value;
                    }
