@@ -115,6 +115,7 @@
                                        })
                                        .then(function(result){
                                           document.getElementById("kanjiRuby").value = result;
+                                        alert("Done");
                      })
 
 
