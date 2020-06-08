@@ -69,7 +69,7 @@
         <input type="hidden" id="action" name="action" value="${action}">
         <input type="hidden" id="id" name="id" value="${(jpvocabulary.id)!}">
         <button type="button" class="btn btn-primary" onclick="confirm()">Confirm</button>
-        <button id="submit" type="submit" class="btn btn-primary" style="visibility:hidden;">Submit</button>
+        <button id="submit" type="submit" class="btn btn-primary">Submit</button>
 
         <script type="text/javascript">
         var today = new Date();
@@ -87,7 +87,6 @@
                         document.getElementById("type").value = selectObject.value;
                    }
                    function confirm(){
-                     document.getElementById("submit").style.visibility = 'visible';
                      var covertStringExample = document.getElementById("example").value;
                      var covertStringKanji = document.getElementById("kanji").value;
                       var kuroshiro = new Kuroshiro();
