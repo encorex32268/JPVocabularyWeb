@@ -3,7 +3,7 @@
  <script src="/static/node_modules/kuroshiro/dist/kuroshiro.min.js"></script>
         <script src="/static/node_modules/kuroshiro-analyzer-kuromoji/dist/kuroshiro-analyzer-kuromoji.min.js"></script>
 
-    <form action="/jpvocabulary" method="post">
+    <form action="/jpvocabulary" method="post" onsubmit="mySubmitFunction()">
         <div class="form-group">
             <label for="name">Date</label>
             <input type="text" class="form-control" id="date" name="date"
@@ -24,12 +24,18 @@
                        <input type="text" class="form-control" id="hiragana" name="hiragana"
                             value="${(jpvocabulary.hiragana)!}">
                 </td>
+
+
             </th>
+
         </table>
 
+
         </div>
+            <input type="text" class="form-control" id="kanjiRubyLabel"></input>
 
                 <div class="form-group">
+
                             <label for="type">詞性</label>
                              <select id="selectType" name="selectType" onchange="setTypeData(this)" >
                                         <option value="">請選擇</option>
@@ -52,9 +58,13 @@
                                         </div>
 
                                         <div class="form-group">
-                                                    <label for="exampleHiragana">例句假名</label>
+
+                                                <label for="exampleHiragana">例句假名</label>
                                                             <input type="text" class="form-control" id="exampleHiragana" name="exampleHiragana"
                                                              value="${(jpvocabulary.exampleHiragana)!}">
+
+                                                                 <input type="text" class="form-control" id="exampleRubyLabel"></input>
+
                                                 </div>
 
                                                   <div class="form-group">
@@ -102,6 +112,7 @@
                             })
                            .then(function(result){
                              document.getElementById("examplehiraganaRuby").value = result;
+                             document.getElementById("exampleRubyLabel").value = result;
                               })
                                 .then(function () {
                                   return kuroshiro.convert(covertStringKanji, {to:"hiragana"});
@@ -114,12 +125,19 @@
                                        })
                                        .then(function(result){
                                           document.getElementById("kanjiRuby").value = result;
-                                        alert("Done");
+                                          document.getElementById("kanjiRubyLabel").value = result;
+
                      })
 
 
                    }
 
+
+            function mySubmitFunction(){
+              document.getElementById("kanjiRuby").value = document.getElementById("kanjiRubyLabel").value
+              document.getElementById("examplehiraganaRuby").value =  document.getElementById("exampleRubyLabel").value ;
+
+            }
         </script>
 
     </form>
